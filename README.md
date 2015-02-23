@@ -26,7 +26,7 @@ Run docker container and from there you can launch Siege http/https load testing
 
     docker run -ti --name siegecmd centminmod/docker-centos6-siege /bin/bash
 
-Commands supported include siege, sproxy, mtr, ping, lynx, wget, curl and traceroute
+Commands supported include siege, wrk, wrk2, sproxy, mtr, ping, lynx, wget, curl and traceroute
 
 For Siege
 
@@ -92,4 +92,48 @@ For mtr
                     [--psize=bytes/-s bytes]
                     [--interval=SECONDS] HOSTNAME [PACKETSIZE]
 
+For wrk https://github.com/wg/wrk.git
+
+    wrk -v
+    wrk 3.1.2 [epoll] Copyright (C) 2012 Will Glozer
+    Usage: wrk <options> <url>                            
+      Options:                                            
+        -c, --connections <N>  Connections to keep open   
+        -d, --duration    <T>  Duration of test           
+        -t, --threads     <N>  Number of threads to use   
+                                                          
+        -s, --script      <S>  Load Lua script file       
+        -H, --header      <H>  Add header to request      
+            --latency          Print latency statistics   
+            --timeout     <T>  Socket/request timeout     
+        -v, --version          Print version details      
+                                                          
+      Numeric arguments may include a SI unit (1k, 1M, 1G)
+      Time arguments may include a time unit (2s, 2m, 2h)
+
+For wrk2 https://github.com/giltene/wrk2
+
+    wrk2 -v
+    wrk 3.1.1 [epoll] Copyright (C) 2012 Will Glozer
+    Usage: wrk <options> <url>                            
+      Options:                                            
+        -c, --connections <N>  Connections to keep open   
+        -d, --duration    <T>  Duration of test           
+        -t, --threads     <N>  Number of threads to use   
+                                                          
+        -s, --script      <S>  Load Lua script file       
+        -H, --header      <H>  Add header to request      
+        -L  --latency          Print latency statistics   
+        -U  --u_latency        Print uncorrceted latency statistics
+            --timeout     <T>  Socket/request timeout     
+        -B, --batch_latency    Measure latency of whole   
+                               batches of pipelined ops   
+                               (as opposed to each op)    
+        -v, --version          Print version details      
+        -R, --rate        <T>  work rate (throughput)     
+                               in requests/sec (total)    
+                               [Required Parameter]                                                          
+                                                          
+      Numeric arguments may include a SI unit (1k, 1M, 1G)
+      Time arguments may include a time unit (2s, 2m, 2h)
 
