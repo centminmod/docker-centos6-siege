@@ -26,7 +26,7 @@ Run docker container and from there you can launch Siege http/https load testing
 
     docker run -ti --name siegecmd centminmod/docker-centos6-siege /bin/bash
 
-Commands supported include siege, ab (apache bench), httperf, locust, wrk, wrk2, weighttp, slowhttptest, sproxy, mtr, ping, lynx, wget, curl and traceroute
+Commands supported include siege, ab (apache bench), httperf, locust, wrk, wrk2, weighttp, slowhttptest, Multi-Mechanize, sproxy, mtr, ping, lynx, wget, curl and traceroute
 
 For Siege [http://www.joedog.org/siege-home/](http://www.joedog.org/siege-home/)
 
@@ -331,3 +331,19 @@ Locust uses test files you write in Python language to define how you want Locus
                             print json data of the locust classes' task execution
                             ratio
       -V, --version         show program's version number and exit
+
+For Multi-Mechanize [http://testutils.org/multi-mechanize/](http://testutils.org/multi-mechanize/). Another performance and load testing tool which uses Python written test scripts and outputs reports in HTML or JMeter compatible XML.
+
+    multimech-run -h
+    ERROR: can not import Matplotlib. install Matplotlib to generate graphs
+    Usage: multimech-run <project name> [options]
+    
+    Options:
+      -h, --help            show this help message and exit
+      -p PORT, --port=PORT  rpc listener port
+      -r RESULTS_DIR, --results=RESULTS_DIR
+                            results directory to reprocess
+      -b BIND_ADDR, --bind-addr=BIND_ADDR
+                            rpc bind address
+      -d PROJECTS_DIR, --directory=PROJECTS_DIR
+                            directory containing project folder
