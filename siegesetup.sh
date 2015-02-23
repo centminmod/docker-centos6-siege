@@ -6,6 +6,7 @@
 # http://www.joedog.org/siege-home/
 # https://github.com/wg/wrk.git
 # https://github.com/giltene/wrk2
+# https://code.google.com/p/slowhttptest/
 ###############################################
 SIEGE_VERSION=3.0.9
 DIR_TMP=/usr/local/src
@@ -17,6 +18,7 @@ SPROXY_LINK="http://download.joedog.org/sproxy/${SPROXY_LINKFILE}"
 WRK_LINK='https://github.com/wg/wrk.git'
 WRKTWO_LINK='https://github.com/giltene/wrk2.git'
 WEIGHTTP='http://cgit.lighttpd.net/weighttp.git/snapshot/weighttp-master.tar.gz'
+SLOWHTTP='https://slowhttptest.googlecode.com/files/slowhttptest-1.6.tar.gz'
 ###############################################
 install() {
 cd $DIR_TMP
@@ -55,10 +57,21 @@ make
 cd $DIR_TMP
 wget -cnv $WEIGHTTP
 tar xzf weighttp-master.tar.gz
+rm -rf weighttp-master.tar.gz
 cd weighttp-master
 CFLAGS=-I/usr/include/libev ./waf configure -vvv
 ./waf build
 ./waf install
+
+cd $DIR_TMP
+wget -cnv $SLOWHTTP
+tar -xzf slowhttptest-*.tar.gz
+rm -rf slowhttptest-*.tar.gz
+cd slowhttptest-1*
+./configure --prefix=/usr
+make
+make install
+
 }
 install
 exit

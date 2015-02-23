@@ -26,12 +26,12 @@ Run docker container and from there you can launch Siege http/https load testing
 
     docker run -ti --name siegecmd centminmod/docker-centos6-siege /bin/bash
 
-Commands supported include siege, wrk, wrk2, sproxy, mtr, ping, lynx, wget, curl and traceroute
+Commands supported include siege, wrk, wrk2, weighttp, slowhttptest, sproxy, mtr, ping, lynx, wget, curl and traceroute
 
 For Siege
 
     siege -h
-    SIEGE 3.0.8
+    SIEGE 3.0.9
     Usage: siege [options]
            siege [options] URL
            siege -g URL
@@ -152,3 +152,57 @@ For weighttp http://cgit.lighttpd.net/weighttp.git
       -v       show version and exit
     
     example: weighttpd -n 10000 -c 10 -t 2 -k -H "User-Agent: foo" localhost/index.html
+
+For slowhttptest https://code.google.com/p/slowhttptest/
+
+    slowhttptest -h
+    
+    slowhttptest, a tool to test for slow HTTP DoS vulnerabilities - version 1.6
+    Usage: slowhttptest [options ...]
+    Test modes:
+      -H               slow headers a.k.a. Slowloris (default)
+      -B               slow body a.k.a R-U-Dead-Yet
+      -R               range attack a.k.a Apache killer
+      -X               slow read a.k.a Slow Read
+    
+    Reporting options:
+    
+      -g               generate statistics with socket state changes (off)
+      -o file_prefix   save statistics output in file.html and file.csv (-g required)
+      -v level         verbosity level 0-4: Fatal, Info, Error, Warning, Debug
+    
+    General options:
+    
+      -c connections   target number of connections (50)
+      -i seconds       interval between followup data in seconds (10)
+      -l seconds       target test length in seconds (240)
+      -r rate          connections per seconds (50)
+      -s bytes         value of Content-Length header if needed (4096)
+      -t verb          verb to use in request, default to GET for
+                       slow headers and response and to POST for slow body
+      -u URL           absolute URL of target (http://localhost/)
+      -x bytes         max length of each randomized name/value pair of
+                       followup data per tick, e.g. -x 2 generates
+                       X-xx: xx for header or &xx=xx for body, where x
+                       is random character (32)
+    
+    Probe/Proxy options:
+    
+      -d host:port     all traffic directed through HTTP proxy at host:port (off)
+      -e host:port     probe traffic directed through HTTP proxy at host:port (off)
+      -p seconds       timeout to wait for HTTP response on probe connection,
+                       after which server is considered inaccessible (5)
+    
+    Range attack specific options:
+    
+      -a start        left boundary of range in range header (5)
+      -b bytes        limit for range header right boundary values (2000)
+    
+    Slow read specific options:
+    
+      -k num          number of times to repeat same request in the connection. Use to
+                      multiply response size if server supports persistent connections (1)
+      -n seconds      interval between read operations from recv buffer in seconds (1)
+      -w bytes        start of the range advertised window size would be picked from (1)
+      -y bytes        end of the range advertised window size would be picked from (512)
+      -z bytes        bytes to slow read from receive buffer with single read() call (5)
