@@ -7,7 +7,7 @@
 # https://github.com/wg/wrk.git
 # https://github.com/giltene/wrk2
 ###############################################
-SIEGE_VERSION=latest
+SIEGE_VERSION=3.0.9
 DIR_TMP=/usr/local/src
 ###############################################
 SIEGE_LINKFILE="siege-${SIEGE_VERSION}.tar.gz"
