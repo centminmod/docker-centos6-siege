@@ -16,6 +16,7 @@ SPROXY_LINKFILE="sproxy-latest.tar.gz"
 SPROXY_LINK="http://download.joedog.org/sproxy/${SPROXY_LINKFILE}"
 WRK_LINK='https://github.com/wg/wrk.git'
 WRKTWO_LINK='https://github.com/giltene/wrk2.git'
+WEIGHTTP='http://cgit.lighttpd.net/weighttp.git/snapshot/weighttp-master.tar.gz'
 ###############################################
 install() {
 cd $DIR_TMP
@@ -50,6 +51,14 @@ git clone $WRKTWO_LINK
 cd wrk2
 make
 \cp -f wrk /usr/bin/wrk2
+
+cd $DIR_TMP
+wget -cnv $WEIGHTTP
+tar xzf weighttp-master.tar.gz
+cd weighttp-master
+CFLAGS=-I/usr/include/libev ./waf configure -vvv
+./waf build
+./waf install
 }
 install
 exit

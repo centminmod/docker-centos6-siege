@@ -137,3 +137,18 @@ For wrk2 https://github.com/giltene/wrk2
       Numeric arguments may include a SI unit (1k, 1M, 1G)
       Time arguments may include a time unit (2s, 2m, 2h)
 
+For weighttp http://cgit.lighttpd.net/weighttp.git
+
+    weighttp - a lightweight and simple webserver benchmarking tool
+    
+    weighttp <options> <url>
+      -n num   number of requests    (mandatory)
+      -t num   threadcount           (default: 1)
+      -c num   concurrent clients    (default: 1)
+      -k       keep alive            (default: no)
+      -6       use ipv6              (default: no)
+      -H str   add header to request
+      -h       show help and exit
+      -v       show version and exit
+    
+    example: weighttpd -n 10000 -c 10 -t 2 -k -H "User-Agent: foo" localhost/index.html
