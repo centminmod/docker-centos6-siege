@@ -1,4 +1,4 @@
-Docker based image for Siege http / https load tester benchmark tool on CentOS 6.6 intended for use with [CentminMod.com LEMP stack](http://centminmod.com). 
+Docker based image for Siege http / https load tester & other http load testing and benchmarking tools on CentOS 6.6 intended for use with [CentminMod.com LEMP stack](http://centminmod.com). 
 
 ### My Docker Hub repo
 
@@ -26,7 +26,7 @@ Run docker container and from there you can launch Siege http/https load testing
 
     docker run -ti --name siegecmd centminmod/docker-centos6-siege /bin/bash
 
-Commands supported include siege, ab (apache bench), locust, wrk, wrk2, weighttp, slowhttptest, sproxy, mtr, ping, lynx, wget, curl and traceroute
+Commands supported include siege, ab (apache bench), httperf, locust, wrk, wrk2, weighttp, slowhttptest, sproxy, mtr, ping, lynx, wget, curl and traceroute
 
 For Siege [http://www.joedog.org/siege-home/](http://www.joedog.org/siege-home/)
 
@@ -245,6 +245,22 @@ For ab (apache bench) [http://httpd.apache.org/docs/2.2/programs/ab.html](http:/
         -h              Display usage information (this message)
         -Z ciphersuite  Specify SSL/TLS cipher suite (See openssl ciphers)
         -f protocol     Specify SSL/TLS protocol (SSL2, SSL3, TLS1, or ALL)
+
+For httperf [https://code.google.com/p/httperf/](https://code.google.com/p/httperf/)
+
+    httperf -h
+    Usage: httperf [-hdvV] [--add-header S] [--burst-length N] [--client N/N]
+            [--close-with-reset] [--debug N] [--failure-status N]
+            [--help] [--hog] [--http-version S] [--max-connections N]
+            [--max-piped-calls N] [--method S] [--no-host-hdr]
+            [--num-calls N] [--num-conns N] [--period [d|u|e]T1[,T2]]
+            [--port N] [--print-reply [header|body]] [--print-request [header|body]]
+            [--rate X] [--recv-buffer N] [--retry-on-failure] [--send-buffer N]
+            [--server S] [--server-name S] [--session-cookies]
+            [--ssl] [--ssl-ciphers L] [--ssl-no-reuse]
+            [--think-timeout X] [--timeout X] [--uri S] [--verbose] [--version]
+            [--wlog y|n,file] [--wsess N,N,X] [--wsesslog N,X,file]
+            [--wset N,X]
 
 For Locust.io http load tester [http://locust.io/](http://locust.io/). Locust's web interface runs via default port 8089, so you would need to map that from the Docker host system local port to this Siege docker container's port 8089 i.e. -p 8089:8089. 
 

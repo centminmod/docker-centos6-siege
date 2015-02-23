@@ -19,6 +19,7 @@ WRK_LINK='https://github.com/wg/wrk.git'
 WRKTWO_LINK='https://github.com/giltene/wrk2.git'
 WEIGHTTP='http://cgit.lighttpd.net/weighttp.git/snapshot/weighttp-master.tar.gz'
 SLOWHTTP='https://slowhttptest.googlecode.com/files/slowhttptest-1.6.tar.gz'
+HTTPERF_LINK='http://httperf.googlecode.com/files/httperf-0.9.0.tar.gz'
 ###############################################
 install() {
 cd $DIR_TMP
@@ -69,6 +70,17 @@ tar -xzf slowhttptest-*.tar.gz
 rm -rf slowhttptest-*.tar.gz
 cd slowhttptest-1*
 ./configure --prefix=/usr
+make
+make install
+
+cd $DIR_TMP
+wget $HTTPERF_LINK
+tar -xvf httperf-0.9.0.tar.gz
+rm -rf httperf-0.9.0.tar.gz
+cd httperf-0.9.0
+mkdir build
+cd build
+../configure
 make
 make install
 
