@@ -26,7 +26,7 @@ Run docker container and from there you can launch Siege http/https load testing
 
     docker run -ti --name siegecmd centminmod/docker-centos6-siege /bin/bash
 
-Commands supported include siege, ab (apache bench), httperf, locust, wrk, wrk2, weighttp, slowhttptest, Multi-Mechanize, sproxy, mtr, ping, lynx, wget, curl and traceroute
+Commands supported include siege, ab (ApacheBench), httperf, locust, wrk, wrk2, weighttp, slowhttptest, Multi-Mechanize, sproxy, mtr, ping, lynx, wget, curl and traceroute
 
 For Siege [http://www.joedog.org/siege-home/](http://www.joedog.org/siege-home/)
 
@@ -207,7 +207,7 @@ For slowhttptest [https://code.google.com/p/slowhttptest/](https://code.google.c
       -y bytes        end of the range advertised window size would be picked from (512)
       -z bytes        bytes to slow read from receive buffer with single read() call (5)
 
-For ab (apache bench) [http://httpd.apache.org/docs/2.2/programs/ab.html](http://httpd.apache.org/docs/2.2/programs/ab.html)
+For ab (ApacheBench) [http://httpd.apache.org/docs/2.2/programs/ab.html](http://httpd.apache.org/docs/2.2/programs/ab.html)
 
     ab -h
     Usage: ab [options] [http[s]://]hostname[:port]/path
