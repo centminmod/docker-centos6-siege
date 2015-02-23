@@ -25,7 +25,7 @@ tar -xzf siege-${SIEGE_VERSION}.tar.gz
 rm -rf siege-${SIEGE_VERSION}.tar.gz
 cd siege-3*
 ./configure
-make -j2
+make
 make install
 mkdir -p /usr/local/var/
 sed -i 's/# failures =/failures = 2048/g' /usr/local/etc/siegerc
@@ -36,7 +36,7 @@ tar -xzf sproxy-latest.tar.gz
 rm -rf sproxy-latest.tar.gz
 cd sproxy-1*
 ./configure
-make -j2
+make
 make install
 
 cd $DIR_TMP
