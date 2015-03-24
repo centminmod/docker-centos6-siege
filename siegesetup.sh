@@ -6,7 +6,8 @@
 # http://www.joedog.org/siege-home/
 # https://github.com/wg/wrk.git
 # https://github.com/giltene/wrk2
-# https://code.google.com/p/slowhttptest/
+# https://github.com/shekyan/slowhttptest
+# https://github.com/httperf/httperf
 ###############################################
 SIEGE_VERSION=3.0.9
 DIR_TMP=/usr/local/src
@@ -18,8 +19,8 @@ SPROXY_LINK="http://download.joedog.org/sproxy/${SPROXY_LINKFILE}"
 WRK_LINK='https://github.com/wg/wrk.git'
 WRKTWO_LINK='https://github.com/giltene/wrk2.git'
 WEIGHTTP='http://cgit.lighttpd.net/weighttp.git/snapshot/weighttp-master.tar.gz'
-SLOWHTTP='https://slowhttptest.googlecode.com/files/slowhttptest-1.6.tar.gz'
-HTTPERF_LINK='http://httperf.googlecode.com/files/httperf-0.9.0.tar.gz'
+SLOWHTTP='https://github.com/shekyan/slowhttptest.git'
+HTTPERF_LINK='https://github.com/httperf/httperf.git'
 ###############################################
 install() {
 cd $DIR_TMP
@@ -65,19 +66,15 @@ CFLAGS=-I/usr/include/libev ./waf configure -vvv
 ./waf install
 
 cd $DIR_TMP
-wget -cnv $SLOWHTTP
-tar -xzf slowhttptest-*.tar.gz
-rm -rf slowhttptest-*.tar.gz
-cd slowhttptest-1*
+git clone $SLOWHTTP slowhttptest
+cd slowhttptest
 ./configure --prefix=/usr
 make
 make install
 
 cd $DIR_TMP
-wget $HTTPERF_LINK
-tar -xvf httperf-0.9.0.tar.gz
-rm -rf httperf-0.9.0.tar.gz
-cd httperf-0.9.0
+git clone $HTTPERF_LINK httperf
+cd httperf
 mkdir build
 cd build
 ../configure
