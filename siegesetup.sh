@@ -85,7 +85,7 @@ wget -cnv ${SIEGE_LINK}
 tar -xzf siege-${SIEGE_VERSION}.tar.gz
 rm -rf siege-${SIEGE_VERSION}.tar.gz
 cd siege-3*
-./configure
+./configure --with-ssl=/usr
 make
 make install
 mkdir -p /usr/local/var/
