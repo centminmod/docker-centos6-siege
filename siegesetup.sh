@@ -9,7 +9,7 @@
 # https://github.com/shekyan/slowhttptest
 # https://github.com/httperf/httperf
 ###############################################
-SIEGE_VERSION=3.0.9
+SIEGE_VERSION=3.1.0
 DIR_TMP=/usr/local/src
 
 SSLDIR_TMP=/usr/local/src/docker_openssl
@@ -75,6 +75,7 @@ staticssl() {
 
 yumpkg() {
 	yum -y install libtool autoconf automake make gcc libevent libevent-devel
+    yum clean all && rm -rf /var/cache/*
 }
 
 install() {
